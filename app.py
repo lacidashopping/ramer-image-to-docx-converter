@@ -4,12 +4,25 @@ from docx import Document
 from PIL import Image
 import io
 
-# Optional: If you are on Windows and Tesseract isn't in your PATH, uncomment & point to it:
+# Uncomment this line when running LOCALLY on Windows:
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 st.set_page_config(page_title="Image to DOCX Converter", page_icon="📝")
+
+# --- 📢 AD / CALL TO ACTION SECTION ---
+with st.sidebar:
+    st.markdown("### 🚀 Need a Custom App?")
+    st.write(
+        "Looking for tailored software solutions, automation tools, or unique web applications?"
+    )
+    st.markdown(
+        "[**Visit ramerlabs.com**](https://ramerlabs.com) to get your custom app built today!"
+    )
+    st.write("---")
+# --------------------------------------
+
 st.title("📝 Multi-Image Text Extractor to DOCX")
-st.write("Upload your images below. This updated version forces left-to-right paragraph reading.")
+st.write("Upload your images below. This app forces left-to-right paragraph reading.")
 
 uploaded_files = st.file_uploader(
     "Choose images...", 
@@ -33,8 +46,6 @@ if uploaded_files:
             st.image(image, use_container_width=True)
             
             with st.spinner(f"Reading text from {file.name}..."):
-                # config='--psm 3' tells tesseract to automatically detect a full block of text
-                # config='--psm 6' assumes a single uniform block of text
                 extracted_text = pytesseract.image_to_string(image, config='--psm 3')
             
             if extracted_text.strip():
