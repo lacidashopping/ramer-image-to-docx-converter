@@ -5,7 +5,7 @@ from PIL import Image
 import io
 
 # Uncomment this line when running LOCALLY on Windows:
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+#pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 st.set_page_config(page_title="Image to DOCX Converter", page_icon="📝")
 
